@@ -88,6 +88,7 @@ User model
 - password: String, required
 - image: String
 - books: Array ObjectID
+- shops: Array ObjectID
 ```
 ```
 Book model
@@ -98,4 +99,9 @@ Book model
 - pic: String
 - rating: Number
 - status: Enum [pending, reading, read]
+```
+```
+Book shop model
+- name: String, required
+- location: String, required
 ```
