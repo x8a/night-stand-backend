@@ -51,7 +51,7 @@ body:
 GET | /reading | renders books user is reading
 GET | /reading/Id | renders book details page
 POST | /reading/Id | mark book as read. Redirect to /reading
-POST | /readingDelete/Id | delete a book. Redirect to /reading
+POST | /reading/delete/Id | delete a book. Redirect to /reading
 POST | /logout | redirects to /
 ```
 body:
@@ -65,9 +65,37 @@ body:
 |---|---|---|
 GET | /pending | renders books user has pending 
 GET | /pending/Id | renders book details page
+POST | /pending/delete/Id | delete a book. Redirect to /pending
 POST | /pending/Id | mark book as reading. Redirect to /pending
 GET | /create/pending | renders book create page
 POST | /create/pending | saves book. Redirect to /pending
+POST | /logout | redirects to /
+```
+body:
+    - pic
+    - title
+    - author
+    - description
+    - rating
+```
+|Method|URL|Description|
+|---|---|---|
+GET | /read | renders books user has read 
+GET | /read/Id | renders book details page
+POST | /logout | redirects to /
+```
+body:
+    - pic
+    - title
+    - author
+    - description
+    - rating
+```
+|Method|URL|Description|
+|---|---|---|
+GET | /my-shops | renders shops user has saved 
+GET | /my-shops/Id | renders shop details page
+POST| /my-shops/delete/Id | deletes a saved place. Redirects to /my-shops
 POST | /logout | redirects to /
 ```
 body:
