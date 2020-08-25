@@ -1,8 +1,10 @@
 # Nightstand
 An app where users keep track of the books they're reading.
 
-## Links to App 
+## Links
 [Heroku]()
+
+[Jira board](https://x8a.atlassian.net/secure/RapidBoard.jspa?rapidView=1&projectKey=NIGHTSTAND)
 
 [Frontend repo](https://github.com/x8a/night-stand-frontend)
 
