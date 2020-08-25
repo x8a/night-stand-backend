@@ -8,10 +8,16 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const cors         = require('cors');
+const session      = require('express-session');
+const passport     = require('passport');
 
+require('./configs/passport');
+
+mongoose.set('useUnifiedTopology', true);
 
 mongoose
-  .connect('mongodb://localhost/night-stand-backend', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -44,15 +50,29 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 // default value for title local
 app.locals.title = 'Nightstand';
 
-
+// ADD CORS SETTINGS HERE TO ALLOW CROSS-ORIGIN INTERACTION:
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3001'] // <== allow calls from this origin
+  })
+);
 
 const index = require('./routes/index');
 app.use('/', index);
+app.use('/', require('./routes/auth'));
 
 
 module.exports = app;
