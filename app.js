@@ -73,6 +73,7 @@ app.use(
 const index = require('./routes/index');
 app.use('/', index);
 app.use('/', require('./routes/auth'));
+app.use('/', require('./routes/book-routes'));
 
 
 module.exports = app;
