@@ -5,6 +5,18 @@ const router = express.Router()
 const Book = require('../models/Book-model')
 const User = require('../models/user-model')
 
+router.get('/book/:id', (req, res, next) => {
+    console.log(req.params.id)
+    Book
+    .findById(req.params.id)
+    .populate('books')
+    .then(book => res.json(book))
+    .catch(e => {
+        next(e)
+        res.json(e)
+    })
+})
+
 router.post('/create/pending', (req, res, next) => {
     Book
     .create({
@@ -23,5 +35,20 @@ router.post('/create/pending', (req, res, next) => {
         res.json(e)
     })
 })
+
+router.put('/book/:id', (req, res, next) => {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      res.status(400).json({ message: 'Specified id is not valid' });
+      return;
+    }
+   
+    Book.findByIdAndUpdate(req.params.id, req.body)
+      .then(() => {
+        res.json({ message: `Book with ID: ${req.params.id} is updated successfully.` });
+      })
+      .catch(error => {
+        res.json(error);
+      });
+  });
 
 module.exports = router

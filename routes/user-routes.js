@@ -5,10 +5,8 @@ const router = express.Router()
 const Book = require('../models/Book-model')
 
 router.get('/profile', (req, res, next) => {
-    console.log(res.req.user)
     Book
-    //.find({ "reader": res.req.user._id})
-    .find()
+    .find({ "reader": req.user._id})
     .populate('books')
     .then(books => {
         res.json(books)
