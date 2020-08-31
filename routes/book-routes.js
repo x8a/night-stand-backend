@@ -6,7 +6,6 @@ const Book = require('../models/Book-model')
 const User = require('../models/user-model')
 
 router.get('/book/:id', (req, res, next) => {
-    console.log(req.params.id)
     Book
     .findById(req.params.id)
     .populate('books')
@@ -15,6 +14,16 @@ router.get('/book/:id', (req, res, next) => {
         next(e)
         res.json(e)
     })
+})
+
+router.get('/books', (req, res, next) => {
+  Book
+  .find({ "reader": req.user._id})
+  .populate('books')
+  .then(books => {
+      res.json(books)
+  })
+  .catch(e => res.json(e))
 })
 
 router.post('/create/pending', (req, res, next) => {
@@ -49,6 +58,6 @@ router.put('/book/:id', (req, res, next) => {
       .catch(error => {
         res.json(error);
       });
-  });
+});
 
 module.exports = router
