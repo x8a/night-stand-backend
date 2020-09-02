@@ -1,13 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
-
+const uploader = require('../configs/cloudinary');
 const User = require('../models/user-model')
 
 router.get('/edit/profile', (req, res, next) => {
     User
     .findById(req.user._id)
-    .populate()
     .then()
     .catch(e => {
         next(e)
