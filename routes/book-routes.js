@@ -32,12 +32,14 @@ router.post('/create/pending', (req, res, next) => {
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
+        pic: req.body.pic,
         status: req.body.status,
         reader: req.user._id
     })
     .then(response => {
         res.json(response)
         User.findOneAndUpdate({ _id: response.reader[0] },{ $push: { books: response } }).then().catch(e => console.log(e))
+        console.log(response)
     })
     .catch(e => {
         next(e)
