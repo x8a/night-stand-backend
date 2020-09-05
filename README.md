@@ -37,7 +37,7 @@ body:
 |---|---|---|
 GET | /profile | renders user profile. If the user is not logged in, render homepage. 
 GET | /edit/profile | renders user profile edit page. If the user is not logged in, render homepage. 
-POST | /editprofile | update user profile. Redirect /user-profile
+POST | /edit/profile | update user profile. Redirect /user-profile
 POST | /logout | redirects to /
 ```
 body:
@@ -85,18 +85,6 @@ body:
 ```
 |Method|URL|Description|
 |---|---|---|
-GET | /pending | renders books user has pending 
-
-```
-body:
-    - pic
-    - title
-    - author
-    - description
-    - status
-```
-|Method|URL|Description|
-|---|---|---|
 GET | /book/:bookId | renders details page of selected book 
 ```
 body:
@@ -111,13 +99,11 @@ body:
 GET | /my-shops | renders shops user has saved 
 GET | /my-shops/Id | renders shop details page
 POST| /my-shops/delete/Id | deletes a saved place. Redirects to /my-shops
-POST | /logout | redirects to /
 ```
 body:
-    - pic
-    - title
-    - author
-    - description
+    - name
+    - address
+    - map with location
 ```
 
 ## Models
