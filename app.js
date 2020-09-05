@@ -52,7 +52,6 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  cookie:{_expires : 60000000},
   resave: true,
   saveUninitialized: true
 }));

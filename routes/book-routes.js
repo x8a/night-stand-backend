@@ -26,7 +26,7 @@ router.get('/books', (req, res, next) => {
   .catch(e => res.json(e))
 })
 
-router.post('/create/pending', (req, res, next) => {
+router.post('/create', (req, res, next) => {
     Book
     .create({
         title: req.body.title,

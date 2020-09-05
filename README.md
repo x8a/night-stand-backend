@@ -35,9 +35,9 @@ body:
 ```
 |Method|URL|Description|
 |---|---|---|
-GET | /user-profile | renders user profile. If the user is not logged in, render homepage. 
-GET | /edit/user-profile/Id | renders user profile edit page. If the user is not logged in, render homepage. 
-POST | /edit/user-profile/Id | update user profile. Redirect /user-profile
+GET | /profile | renders user profile. If the user is not logged in, render homepage. 
+GET | /edit/profile | renders user profile edit page. If the user is not logged in, render homepage. 
+POST | /editprofile | update user profile. Redirect /user-profile
 POST | /logout | redirects to /
 ```
 body:
@@ -51,47 +51,60 @@ body:
 |Method|URL|Description|
 |---|---|---|
 GET | /reading | renders books user is reading
-GET | /reading/Id | renders book details page
-POST | /reading/Id | mark book as read. Redirect to /reading
-POST | /reading/delete/Id | delete a book. Redirect to /reading
-POST | /logout | redirects to /
+
 ```
 body:
     - pic
     - title
     - author
     - description
-    - rating
+    -status
 ```
 |Method|URL|Description|
 |---|---|---|
 GET | /pending | renders books user has pending 
-GET | /pending/Id | renders book details page
-POST | /pending/delete/Id | delete a book. Redirect to /pending
-POST | /pending/Id | mark book as reading. Redirect to /pending
-GET | /create/pending | renders book create page
-POST | /create/pending | saves book. Redirect to /pending
-POST | /logout | redirects to /
+
 ```
 body:
     - pic
     - title
     - author
     - description
-    - rating
+    - status
 ```
 |Method|URL|Description|
 |---|---|---|
 GET | /read | renders books user has read 
-GET | /read/Id | renders book details page
-POST | /logout | redirects to /
 ```
 body:
     - pic
     - title
     - author
     - description
-    - rating
+    - status
+```
+|Method|URL|Description|
+|---|---|---|
+GET | /pending | renders books user has pending 
+
+```
+body:
+    - pic
+    - title
+    - author
+    - description
+    - status
+```
+|Method|URL|Description|
+|---|---|---|
+GET | /book/:bookId | renders details page of selected book 
+```
+body:
+    - pic
+    - title
+    - author
+    - description
+    - status
 ```
 |Method|URL|Description|
 |---|---|---|
@@ -105,7 +118,6 @@ body:
     - title
     - author
     - description
-    - rating
 ```
 
 ## Models
