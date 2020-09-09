@@ -85,18 +85,6 @@ body:
 ```
 |Method|URL|Description|
 |---|---|---|
-GET | /pending | renders books user has pending 
-
-```
-body:
-    - pic
-    - title
-    - author
-    - description
-    - status
-```
-|Method|URL|Description|
-|---|---|---|
 GET | /book/:bookId | renders details page of selected book 
 ```
 body:
@@ -115,7 +103,7 @@ DELETE| /my-shops/Id | deletes a saved place
 body:
     - name
     - address
-    - map
+    - map with location
 ```
 
 ## Models
