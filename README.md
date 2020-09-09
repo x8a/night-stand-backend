@@ -37,7 +37,7 @@ body:
 |---|---|---|
 GET | /profile | renders user profile. If the user is not logged in, render homepage. 
 GET | /edit/profile | renders user profile edit page. If the user is not logged in, render homepage. 
-POST | /editprofile | update user profile. Redirect /user-profile
+POST | /edit/profile | update user profile. Redirect /user-profile
 POST | /logout | redirects to /
 ```
 body:
@@ -58,7 +58,7 @@ body:
     - title
     - author
     - description
-    -status
+    - status
 ```
 |Method|URL|Description|
 |---|---|---|
@@ -110,14 +110,12 @@ body:
 |---|---|---|
 GET | /my-shops | renders shops user has saved 
 GET | /my-shops/Id | renders shop details page
-POST| /my-shops/delete/Id | deletes a saved place. Redirects to /my-shops
-POST | /logout | redirects to /
+DELETE| /my-shops/Id | deletes a saved place
 ```
 body:
-    - pic
-    - title
-    - author
-    - description
+    - name
+    - address
+    - map
 ```
 
 ## Models
@@ -139,11 +137,10 @@ Book model
 - author: String, required
 - description: String, required
 - pic: String
-- rating: Number
 - status: Enum [pending, reading, read]
 ```
 ```
 Book shop model
 - name: String, required
-- location: String, required
+- address: String, required
 ```
