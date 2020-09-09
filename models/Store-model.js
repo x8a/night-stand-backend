@@ -4,19 +4,15 @@ const Schema = mongoose.Schema;
 const storeSchema = new Schema(
   {
     store: {
-      type: String,
-      required: true,
+      type: String
     },
-    lat: {
-        type: Number
-    },
-    lng: {
-        type: Number
+    address: {
+      type: String
     },
     reader: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
   { timestamps: true }
 );
 
-const Store = mongoose.model('User', storeSchema);
+const Store = mongoose.model('Store', storeSchema);
 module.exports = Store;
