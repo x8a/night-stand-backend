@@ -76,5 +76,6 @@ app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/book-routes'));
 app.use('/', require('./routes/user-routes'));
 app.use('/', require('./routes/file-upload'));
+app.use('/', require('./routes/location-routes'));
 
 module.exports = app;

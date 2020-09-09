@@ -58,7 +58,7 @@ body:
     - title
     - author
     - description
-    -status
+    - status
 ```
 |Method|URL|Description|
 |---|---|---|
@@ -98,7 +98,7 @@ body:
 |---|---|---|
 GET | /my-shops | renders shops user has saved 
 GET | /my-shops/Id | renders shop details page
-POST| /my-shops/delete/Id | deletes a saved place. Redirects to /my-shops
+DELETE| /my-shops/Id | deletes a saved place
 ```
 body:
     - name
@@ -125,11 +125,10 @@ Book model
 - author: String, required
 - description: String, required
 - pic: String
-- rating: Number
 - status: Enum [pending, reading, read]
 ```
 ```
 Book shop model
 - name: String, required
-- location: String, required
+- address: String, required
 ```

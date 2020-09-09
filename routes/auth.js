@@ -11,30 +11,30 @@ authRoutes.post('/signup', (req, res, next) => {
     const lastName = req.body.lastName;
   
     if (!username || !password) {
-      res.status(400).json({ message: 'Provide username and password' });
+      res.status(400).json({ message: 'Enter a username and password.' });
       return;
     }
 
     if (!name || !lastName) {
-        res.status(400).json({ message: 'Provide name and last name' });
+        res.status(400).json({ message: 'Enter a name and last name' });
         return;
     }
 
  
     if(password.length < 7){
-        res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
+        res.status(400).json({ message: 'Your password must contain 7 characters.' });
         return;
     }
   
     User.findOne({ username }, (err, foundUser) => {
  
         if(err){
-            res.status(500).json({message: "There was an error when finding the user."});
+            res.status(500).json({message: "We could not retrieve your username. Try again."});
             return;
         }
  
         if (foundUser) {
-            res.status(400).json({ message: 'Username taken. Choose another one.' });
+            res.status(400).json({ message: 'This username is taken. Enter another one.' });
             return;
         }
   
@@ -50,7 +50,7 @@ authRoutes.post('/signup', (req, res, next) => {
   
         aNewUser.save(err => {
             if (err) {
-                res.status(400).json({ message: 'Saving user to database went wrong.' });
+                res.status(400).json({ message: 'The user could not be created. Try again.' });
                 return;
             }
             
@@ -59,7 +59,7 @@ authRoutes.post('/signup', (req, res, next) => {
             req.login(aNewUser, (err) => {
  
                 if (err) {
-                    res.status(500).json({ message: 'Login after signup went bad.' });
+                    res.status(500).json({ message: 'The user could not be logged in. Try again.' });
                     return;
                 }
             
@@ -74,7 +74,7 @@ authRoutes.post('/signup', (req, res, next) => {
 authRoutes.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, theUser, failureDetails) => {
         if (err) {
-            res.status(500).json({ message: 'Something went wrong authenticating user' });
+            res.status(500).json({ message: 'There was when authenticating your user. Try again.' });
             return;
         }
     
