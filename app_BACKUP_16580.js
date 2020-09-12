@@ -74,13 +74,16 @@ const index = require('./routes/index');
 app.use('/', index);
 app.use('/', require('./routes/auth'));
 app.use('/', require('./routes/book-routes'));
-app.use('/', require('./routes/user-routes'));
-app.use('/', require('./routes/file-upload'));
-app.use('/', require('./routes/location-routes'));
+<<<<<<< HEAD
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");
 });
+=======
+app.use('/', require('./routes/user-routes'));
+app.use('/', require('./routes/file-upload'));
+app.use('/', require('./routes/location-routes'));
+>>>>>>> ed3c4d5b2b43a61ca10180b0c1d141c79824f497
 
 module.exports = app;

@@ -78,9 +78,4 @@ app.use('/', require('./routes/user-routes'));
 app.use('/', require('./routes/file-upload'));
 app.use('/', require('./routes/location-routes'));
 
-app.use((req, res, next) => {
-  // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 module.exports = app;
