@@ -4,7 +4,7 @@ const axios = require('axios')
 const unidecode = require('unidecode')
 
 const Store = require('../models/Store-model')
-const User = require('../models/user-model')
+const User = require('../models/User-model')
 
 router.get('/my-shops/:id', (req, res, next) => {
   Store

@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const uploader = require('../configs/cloudinary');
-const User = require('../models/user-model')
+const User = require('../models/User-model')
 
 router.post('/upload', uploader.single("pic"), (req, res, next) => {
 
